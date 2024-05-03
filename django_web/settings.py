@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-@t_w@11j#*vh&p614p&1z=snrd4o^%j_6o!y0dbs5yz^@vnx@m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "web.mirrovex.pl"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "web.mirrovex.pl", ".vercel.app"]
 
 
 # Application definition
