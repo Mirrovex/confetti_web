@@ -4,6 +4,9 @@ migrations:
 migrate:
 	python manage.py migrate
 
+admin:
+	python manage.py createsuperuser
+
 app:
 	django-admin startapp $(word 2, $(MAKECMDGOALS))
 
