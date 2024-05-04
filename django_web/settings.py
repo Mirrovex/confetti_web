@@ -29,7 +29,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-@t_w@11j#*vh&p614p&1z=snrd4o^%j_6o!y0dbs5yz^@vnx@m"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if os.environ.get("MODE") == "production":
+    DEBUG = False
+else:
+    DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".vercel.app", "web.mirrovex.pl", "django-staging.mirrovex.pl", "django.mirrovex.pl", "mirrovex.pl", "staging.mirrovex.pl"]
 
@@ -45,6 +48,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     "app",
+    "api",
+
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
@@ -62,7 +68,7 @@ ROOT_URLCONF = "django_web.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        'DIRS': [],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -90,6 +96,7 @@ DATABASES = {
 
 if os.environ.get("DATABASE_URL") and os.environ.get("MODE") != "local":
     DATABASES["default"] = dj_database_url.parse(os.environ.get("DATABASE_URL"))
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
