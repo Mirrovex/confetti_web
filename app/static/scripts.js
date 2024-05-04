@@ -52,8 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
           }).catch(error => {
             console.error('Wystąpił błąd:', error);
           });
-        } else {
-          alert("Anulowano");
         }
       }
     }).catch(error => {
