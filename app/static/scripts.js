@@ -14,6 +14,7 @@ function getCookie(name) {
   return cookieValue;
 }
 var csrftoken = getCookie('csrftoken');
+let counterValue = 0;
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -66,8 +67,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const logout_button = document.querySelector('.logout_button');
   const counter = document.querySelector('.counter');
 
-  let counterValue = 0;
-
   // Adds an event listener for the 'click' event on the targeted button.
   confetti_button.addEventListener('click', function (event) {
     // Retrieves the position and size of the button to calculate where the confetti should appear.
@@ -99,20 +98,6 @@ document.addEventListener('DOMContentLoaded', function () {
       video.play()
     }
 
-    $.ajax({
-      url: "api/click/",
-      type: 'POST',
-      headers: { "X-CSRFToken": csrftoken },
-      data: { "click": 1 },
-
-      success: function (response) {
-        
-      },
-      error: function (xhr, status, error) {
-        console.error(error, status);
-      }
-    });
-
     counter.textContent = counterValue
   });
 
@@ -135,5 +120,27 @@ document.addEventListener('DOMContentLoaded', function () {
     }).catch(error => {
       console.error('Wystąpił błąd:', error);
     });
+  });
+});
+
+window.addEventListener('beforeunload', function(event) {
+  fetch("api/click/", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': csrftoken,
+    },
+    body: JSON.stringify({ "click": counterValue })
+  })
+  .then(response => {
+    if (response.status == 200) {
+      console.log("Dodano kliknięcia");
+      window.location.reload();
+    } else {
+      console.log("Nie znaleziono Użytkownika");
+      window.location.reload();
+    }
+  }).catch(error => {
+    console.error('Wystąpił błąd:', error);
   });
 });

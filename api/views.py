@@ -16,10 +16,10 @@ class ClickView(APIView):
         users = User.objects.filter(session=self.request.session.session_key)
         if users.exists():
             user = users[0]
-            user.click += 1
+            user.click += request.data.get("click")
             user.save()
 
-            return Response("Dodano kliknięcie", status=200)
+            return Response("Dodano kliknięcia", status=200)
         return Response("Nie znaleziono użytkownika", status=404)
     
 
