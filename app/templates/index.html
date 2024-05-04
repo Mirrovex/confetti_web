@@ -1,12 +1,32 @@
-<!-- index.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="static/media/pantera-icon.png">
     <title>{{ title }}</title>
+    <script src="static/scripts.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/styles.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <h1>{{ content }}</h1>
+    <div class="flexcol main_div">
+        <div class="flexrow name_div">
+            <img src="static/media/pantera.jpg" class="logo" />
+            <h1 class="name">Mirrovex</h1>
+        </div>
+        <div class="counter_div flexrow">
+            <div class="container">
+                <button class="confetti_button">Konfetti 🎉</button>
+            </div>
+            <p class="counter name">0</p>
+        </div>
+        <div class="videoContainer">
+            <video src="static/media/rickroll.mp4" class="rickroll"></video>
+        </div>
+    </div>
 </body>
 </html>
