@@ -35,10 +35,52 @@ body {
     padding: 0 5px;
     font-size: 4em;
 }
+
+.leadboard_div {
+    position: absolute;
+    margin-top: 116px;
+}
+
+
+
+table {
+    width: 30vw;
+    border-collapse: collapse;
+    background: linear-gradient(90deg, #03a9f4, #f441a5);
+    background-clip: text;
+    font-family: fantasy, sans-serif;
+    color: transparent;
+    font-size: 1.5em;
+}
+th, td {
+	padding: 10px;
+}
+tr td:first-child {
+    text-align: center;
+}
+tr td:last-child {
+    text-align: center;
+}
+td.nuber {
+    width: 5px;
+    padding: 10px;
+}
+th {
+	text-align: left;
+}
+tr:first-child {
+    padding: 5px;
+}
+thead th {
+	background-color: #55608f;
+}
+
+
+
+
 .main_div {
     align-items: center;
     margin-top: 60px;
-    padding: 0 10px;
 }
 .name_div {
     align-items: center;
@@ -50,7 +92,7 @@ body {
     justify-content: center;
 }
 
-.confetti_button {
+.button {
     font-size: 1.4em;
     padding: 0.6em 0.8em;
     border-radius: 0.5em;
@@ -102,4 +144,25 @@ body {
     margin-top: 50px;
     height: 50vh;
     visibility: hidden;
+}
+
+.logout_div {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: auto;
+    margin: 10px;
+}
+.logout {
+    height: auto;
+}
+.logout_button {
+    font-size: 30px;
+    border-radius: 12px;
+    padding: 10px 10px 8px 15px;
+}
+.gradient_text {
+    background: linear-gradient(90deg, #03a9f4, #f441a5);
+    background-clip: text;
+    color: transparent;
 }
