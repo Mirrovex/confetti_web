@@ -96,24 +96,6 @@ document.addEventListener('DOMContentLoaded', function () {
       video.play()
     }
 
-    fetch("api/click/", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRFToken': csrftoken,
-      },
-      body: JSON.stringify({ "click": 1 })
-    })
-    .then(response => {
-      if (response.status == 200) {
-        console.log("Dodano kliknięcia");
-      } else {
-        console.log("Nie znaleziono Użytkownika");
-      }
-    }).catch(error => {
-      console.error('Wystąpił błąd:', error);
-    });
-
     counter.textContent = counterValue
   });
 
@@ -127,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .then(response => {
       if (response.status == 200) {
-        /* fetch("api/click/", {
+        fetch("api/click/", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -143,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
           }
         }).catch(error => {
           console.error('Wystąpił błąd:', error);
-        }); */
+        });
         window.location.reload();
       } else {
         alert("Nie znaleziono Użytkownika");
@@ -155,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-/* window.addEventListener('beforeunload', function(event) {
+window.addEventListener('beforeunload', function(event) {
   fetch("api/click/", {
     method: 'POST',
     headers: {
@@ -175,4 +157,4 @@ document.addEventListener('DOMContentLoaded', function () {
   }).catch(error => {
     console.error('Wystąpił błąd:', error);
   });
-}); */
+});
