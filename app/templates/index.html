@@ -10,23 +10,97 @@
     <link rel="stylesheet" type="text/css" href="static/styles.css">
     
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <div class="flexcol main_div">
-        <div class="flexrow name_div">
-            <img src="static/media/pantera.jpg" class="logo" />
-            <h1 class="name">Mirrovex</h1>
+    <div class="flexrow app_div">
+        <div class="flexcol leadboard_div">
+            <table class="leadboard_table">
+                <thead>
+                  <td class="nuber">Miejsce</td>
+                  <td>Nazwa</td>
+                  <td class="nuber">Liczba</td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1.</td>
+                        <td>{{ user0.name }}</td>
+                        <td>{{ user0.click }}</td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>{{ user1.name }}</td>
+                        <td>{{ user1.click }}</td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td>{{ user2.name }}</td>
+                        <td>{{ user2.click }}</td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td>{{ user3.name }}</td>
+                        <td>{{ user3.click }}</td>
+                    </tr>
+                    <tr>
+                        <td>5.</td>
+                        <td>{{ user4.name }}</td>
+                        <td>{{ user4.click }}</td>
+                    </tr>
+                    <tr>
+                        <td>6.</td>
+                        <td>{{ user5.name }}</td>
+                        <td>{{ user5.click }}</td>
+                    </tr>
+                    <tr>
+                        <td>7.</td>
+                        <td>{{ user6.name }}</td>
+                        <td>{{ user6.click }}</td>
+                    </tr>
+                    <tr>
+                        <td>8.</td>
+                        <td>{{ user7.name }}</td>
+                        <td>{{ user7.click }}</td>
+                    </tr>
+                    <tr>
+                        <td>9.</td>
+                        <td>{{ user8.name }}</td>
+                        <td>{{ user8.click }}</td>
+                    </tr>
+                    <tr>
+                        <td>10.</td>
+                        <td>{{ user9.name }}</td>
+                        <td>{{ user9.click }}</td>
+                    </tr>
+                </tbody>
+              </table>
         </div>
-        <div class="counter_div flexrow">
-            <div class="container">
-                <button class="confetti_button">Konfetti 🎉</button>
+        <div class="flexcol main_div">
+            <div class="flexrow name_div">
+                <img src="static/media/pantera.jpg" class="logo" />
+                <h1 class="name">Mirrovex</h1>
             </div>
-            <p class="counter name">0</p>
+            <div class="counter_div flexrow">
+                <div class="container">
+                    <button class="confetti_button button">Konfetti 🎉</button>
+                </div>
+                <p class="counter name">0</p>
+            </div>
+            <div class="videoContainer">
+                <video src="static/media/rickroll.mp4" class="rickroll"></video>
+            </div>
         </div>
-        <div class="videoContainer">
-            <video src="static/media/rickroll.mp4" class="rickroll"></video>
+        <div class="counter_div logout_div">
+            <div class="container logout">
+                <button class="logout_button button">
+                    <div class="gradient_text">
+                        <i class="fas fa-sign-out-alt logout_icon"></i>
+                    </div>
+                </button>
+            </div>
         </div>
+        
     </div>
 </body>
 </html>
