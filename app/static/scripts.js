@@ -52,8 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
           }).catch(error => {
             console.error('Wystąpił błąd:', error);
           });
-        } else {
-          alert("Anulowano");
         }
       }
     }).catch(error => {
@@ -111,7 +109,23 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .then(response => {
       if (response.status == 200) {
-        alert("Wylogowano");
+        fetch("api/click/", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken,
+          },
+          body: JSON.stringify({ "click": counterValue })
+        })
+        .then(response => {
+          if (response.status == 200) {
+            console.log("Dodano kliknięcia");
+          } else {
+            console.log("Nie znaleziono Użytkownika");
+          }
+        }).catch(error => {
+          console.error('Wystąpił błąd:', error);
+        });
         window.location.reload();
       } else {
         alert("Nie znaleziono Użytkownika");
