@@ -124,6 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   logout_button.addEventListener('click', function (event) {
+    postClick();
     fetch('api/logout/', {
       method: 'POST',
       headers: {
@@ -133,11 +134,11 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .then(response => {
       if (response.status == 200) {
-        postClick()
+        console.log("Wylogowano");
       } else {
         alert("Nie znaleziono Użytkownika");
-        window.location.reload();
       }
+      window.location.reload();
     }).catch(error => {
       console.error('Wystąpił błąd:', error);
     });
