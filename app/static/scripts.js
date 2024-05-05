@@ -18,6 +18,7 @@ let counterValue = 0;
 
 function postClick() {
   if (counterValue > 0) {
+    let click = counterValue
     counterValue = 0;
     fetch("api/click/", {
       method: 'POST',
@@ -25,7 +26,7 @@ function postClick() {
         'Content-Type': 'application/json',
         'X-CSRFToken': csrftoken,
       },
-      body: JSON.stringify({ "click": counterValue })
+      body: JSON.stringify({ "click": click })
     })
     .then(response => {
       if (response.status == 200) {
