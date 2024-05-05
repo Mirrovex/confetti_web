@@ -54,12 +54,10 @@ table {
 }
 th, td {
 	padding: 10px;
-}
-tr td:first-child {
     text-align: center;
 }
-tr td:last-child {
-    text-align: center;
+tr td:nth-child(2) {
+    text-align: left;
 }
 td.nuber {
     width: 5px;

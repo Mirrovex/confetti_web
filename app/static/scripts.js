@@ -16,18 +16,28 @@ function getCookie(name) {
 var csrftoken = getCookie('csrftoken');
 let counterValue = 0;
 let doBalls = null
+let startTime = null
+let endTime = null
 
 function postClick() {
   if (counterValue > 0) {
+    var totalTime = 0;
+    if (counterValue >= 10) {
+      totalTime = endTime - startTime;
+    }
+    startTime = null
+    endTime = null
+
     let click = counterValue
     counterValue = 0;
+
     fetch("api/click/", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'X-CSRFToken': csrftoken,
       },
-      body: JSON.stringify({ "click": click })
+      body: JSON.stringify({ "click": click, "time": totalTime })
     })
     .then(response => {
       if (response.status == 200) {
@@ -388,7 +398,7 @@ document.addEventListener('DOMContentLoaded', function () {
    const confetti_button = document.querySelector('.confetti_button');  // You can change the class, just make sure it is defined in the module also.  
    const logout_button = document.querySelector('.logout_button');
    const counter = document.querySelector('.counter');
-   const current_user_click = document.querySelector('tr.current td:last-child')
+   const current_user_click = document.querySelector('tr.current td:nth-last-child(2)')
 
   fetch('api/get_user/', {
     method: 'GET',
@@ -431,6 +441,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Adds an event listener for the 'click' event on the targeted button.
   confetti_button.addEventListener('click', function (event) {
+    endTime = new Date();
+    if (!startTime) {
+      startTime = new Date();
+    }
     // Retrieves the position and size of the button to calculate where the confetti should appear.
     const rect = confetti_button.getBoundingClientRect();
 
