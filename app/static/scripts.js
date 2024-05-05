@@ -19,9 +19,6 @@ let doBalls = null
 let startTime = null
 let endTime = null
 
-
-
-
 function postClick() {
   if (counterValue > 0) {
     var totalTime = 0;
