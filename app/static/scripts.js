@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const confetti_button = document.querySelector('.confetti_button');  // You can change the class, just make sure it is defined in the module also.  
   const logout_button = document.querySelector('.logout_button');
   const counter = document.querySelector('.counter');
+  const current_user_click = document.querySelector('tr.current td:last-child')
 
   // Adds an event listener for the 'click' event on the targeted button.
   confetti_button.addEventListener('click', function (event) {
@@ -97,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     counter.textContent = counterValue
+    current_user_click.textContent = parseInt(current_user_click.textContent) + 1
   });
 
   logout_button.addEventListener('click', function (event) {
