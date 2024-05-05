@@ -106,6 +106,10 @@ tr.current {
     box-shadow: 2px 2px 3px #000000b4;
     padding: 10px 15px 10px 30px;
 }
+.container .button:disabled {
+    color: #777777;
+    box-shadow: 0px 0px 20px 20px #000000c2;
+}
 .container {
     position: relative;
     padding: 3px;
