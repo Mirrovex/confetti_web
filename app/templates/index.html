@@ -15,7 +15,7 @@
 </head>
 <body>
     <section class="canvas-holder">
-        <canvas id="balls" height="456" width="1040"></canvas>
+        <canvas id="balls"></canvas>
     </section>
     <div class="flexrow app_div">
         <div class="flexcol leadboard_div">
@@ -95,7 +95,7 @@
                 <img src="static/media/pantera.jpg" class="logo" />
                 <h1 class="name">Mirrovex</h1>
             </div>
-            <div class="counter_div flexrow">
+            <div class="button_div flexrow">
                 <div class="container">
                     <button class="confetti_button button" disabled>Konfetti 🎉</button>
                 </div>
@@ -105,16 +105,26 @@
                 <video src="static/media/rickroll.mp4" class="rickroll"></video>
             </div>
         </div>
-        <div class="counter_div logout_div">
-            <div class="container logout">
-                <button class="logout_button button">
-                    <div class="gradient_text">
-                        <i class="fas fa-sign-out-alt logout_icon"></i>
-                    </div>
-                </button>
+        <div class="flexrow buttons_container">
+            <div class="button_div icon_button_div">
+                <div class="container icon_container">
+                    <button class="icon_button button save">
+                        <div class="gradient_text">
+                            <i class="fas fa-save"></i>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <div class="button_div icon_button_div">
+                <div class="container icon_container">
+                    <button class="icon_button button logout">
+                        <div class="gradient_text">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </div>
+                    </button>
+                </div>
             </div>
         </div>
-        
     </div>
 </body>
 </html>
