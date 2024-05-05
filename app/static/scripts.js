@@ -18,6 +18,7 @@ let counterValue = 0;
 
 function postClick() {
   if (counterValue > 0) {
+    counterValue = 0;
     fetch("api/click/", {
       method: 'POST',
       headers: {
@@ -32,7 +33,6 @@ function postClick() {
       } else {
         console.log("Nie znaleziono Użytkownika");
       }
-      counterValue = 0;
       window.location.reload();
     }).catch(error => {
       console.error('Wystąpił błąd:', error);
