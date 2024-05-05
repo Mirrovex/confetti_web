@@ -74,6 +74,9 @@ tr:first-child {
 thead th {
 	background-color: #55608f;
 }
+tr.current {
+    background: linear-gradient(90deg, #03a9f46e, #f441a56e);
+}
 
 
 
