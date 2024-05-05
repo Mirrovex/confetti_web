@@ -474,7 +474,7 @@ document.addEventListener('DOMContentLoaded', function () {
       video.play()
     }
 
-    if (counterValue % 100 === 0 || counterValue === 20) {
+    if (counterValue % 100 === 0 || counterValue === 20 || true) {
       doBalls()
     }
 
