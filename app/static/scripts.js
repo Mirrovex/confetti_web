@@ -29,11 +29,11 @@ function postClick() {
     .then(response => {
       if (response.status == 200) {
         console.log("Dodano kliknięcia");
-        window.location.reload();
       } else {
         console.log("Nie znaleziono Użytkownika");
-        window.location.reload();
       }
+      counterValue = 0;
+      window.location.reload();
     }).catch(error => {
       console.error('Wystąpił błąd:', error);
     });
