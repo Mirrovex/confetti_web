@@ -18,9 +18,6 @@ let counterValue = 0;
 let doBalls = null
 let startTime = null
 
-
-
-
 function postClick() {
   if (counterValue > 0) {
     var totalTime = new Date() - startTime;
