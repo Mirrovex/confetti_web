@@ -19,7 +19,11 @@ class ClickView(APIView):
                 return Response("Brak kliknięć", status=200)
             
             seconds = request.data.get("time") / 1000
-            speed = request.data.get("click") / seconds
+            if seconds == 0:
+                speed = 0
+            else:
+                speed = request.data.get("click") / seconds
+                speed = round(speed, 1)
 
             user = users[0]
             click_before = user.click
