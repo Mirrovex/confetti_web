@@ -16,6 +16,28 @@ function getCookie(name) {
 var csrftoken = getCookie('csrftoken');
 let counterValue = 0;
 
+function postClick() {
+  fetch("api/click/", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': csrftoken,
+    },
+    body: JSON.stringify({ "click": counterValue })
+  })
+  .then(response => {
+    if (response.status == 200) {
+      console.log("Dodano kliknięcia");
+      window.location.reload();
+    } else {
+      console.log("Nie znaleziono Użytkownika");
+      window.location.reload();
+    }
+  }).catch(error => {
+    console.error('Wystąpił błąd:', error);
+  });
+}
+
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -111,24 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .then(response => {
       if (response.status == 200) {
-        fetch("api/click/", {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': csrftoken,
-          },
-          body: JSON.stringify({ "click": counterValue })
-        })
-        .then(response => {
-          if (response.status == 200) {
-            console.log("Dodano kliknięcia");
-          } else {
-            console.log("Nie znaleziono Użytkownika");
-          }
-        }).catch(error => {
-          console.error('Wystąpił błąd:', error);
-        });
-        window.location.reload();
+        postClick()
       } else {
         alert("Nie znaleziono Użytkownika");
         window.location.reload();
@@ -140,23 +145,5 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 window.addEventListener('beforeunload', function(event) {
-  fetch("api/click/", {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-CSRFToken': csrftoken,
-    },
-    body: JSON.stringify({ "click": counterValue })
-  })
-  .then(response => {
-    if (response.status == 200) {
-      console.log("Dodano kliknięcia");
-      window.location.reload();
-    } else {
-      console.log("Nie znaleziono Użytkownika");
-      window.location.reload();
-    }
-  }).catch(error => {
-    console.error('Wystąpił błąd:', error);
-  });
+  postClick()
 });
