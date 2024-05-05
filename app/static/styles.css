@@ -74,6 +74,9 @@ tr:first-child {
 thead th {
 	background-color: #55608f;
 }
+tr.current {
+    background: linear-gradient(90deg, #03a9f46e, #f441a56e);
+}
 
 
 
@@ -102,6 +105,10 @@ thead th {
     cursor: pointer;
     box-shadow: 2px 2px 3px #000000b4;
     padding: 10px 15px 10px 30px;
+}
+.container .button:disabled {
+    color: #777777;
+    box-shadow: 0px 0px 20px 20px #000000c2;
 }
 .container {
     position: relative;

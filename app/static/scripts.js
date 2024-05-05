@@ -16,8 +16,38 @@ function getCookie(name) {
 var csrftoken = getCookie('csrftoken');
 let counterValue = 0;
 
+function postClick() {
+  if (counterValue > 0) {
+    let click = counterValue
+    counterValue = 0;
+    fetch("api/click/", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrftoken,
+      },
+      body: JSON.stringify({ "click": click })
+    })
+    .then(response => {
+      if (response.status == 200) {
+        console.log("Dodano kliknięcia");
+      } else {
+        console.log("Nie znaleziono Użytkownika");
+      }
+      window.location.reload();
+    }).catch(error => {
+      console.error('Wystąpił błąd:', error);
+    });
+  }
+}
+
 
 document.addEventListener('DOMContentLoaded', function () {
+   // Selects the first element with the class '.confetti-button' as the target button.
+   const confetti_button = document.querySelector('.confetti_button');  // You can change the class, just make sure it is defined in the module also.  
+   const logout_button = document.querySelector('.logout_button');
+   const counter = document.querySelector('.counter');
+   const current_user_click = document.querySelector('tr.current td:last-child')
 
   fetch('api/get_user/', {
     method: 'GET',
@@ -29,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
     .then(response => response.json())
     .then(data => {
       if (data.name) {
-        alert("Zalogowano jako: " + data.name);
+        confetti_button.disabled = false
       } else {
         var name = prompt("Wprowadź swóją nazwę:");
         if (name !== null) {
@@ -57,13 +87,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }).catch(error => {
       console.error('Wystąpił błąd:', error);
     });
-
-
-
-  // Selects the first element with the class '.confetti-button' as the target button.
-  const confetti_button = document.querySelector('.confetti_button');  // You can change the class, just make sure it is defined in the module also.  
-  const logout_button = document.querySelector('.logout_button');
-  const counter = document.querySelector('.counter');
 
   // Adds an event listener for the 'click' event on the targeted button.
   confetti_button.addEventListener('click', function (event) {
@@ -97,6 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     counter.textContent = counterValue
+    current_user_click.textContent = parseInt(current_user_click.textContent) + 1
   });
 
   logout_button.addEventListener('click', function (event) {
@@ -109,24 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .then(response => {
       if (response.status == 200) {
-        fetch("api/click/", {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': csrftoken,
-          },
-          body: JSON.stringify({ "click": counterValue })
-        })
-        .then(response => {
-          if (response.status == 200) {
-            console.log("Dodano kliknięcia");
-          } else {
-            console.log("Nie znaleziono Użytkownika");
-          }
-        }).catch(error => {
-          console.error('Wystąpił błąd:', error);
-        });
-        window.location.reload();
+        postClick()
       } else {
         alert("Nie znaleziono Użytkownika");
         window.location.reload();
@@ -138,23 +145,5 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 window.addEventListener('beforeunload', function(event) {
-  fetch("api/click/", {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-CSRFToken': csrftoken,
-    },
-    body: JSON.stringify({ "click": counterValue })
-  })
-  .then(response => {
-    if (response.status == 200) {
-      console.log("Dodano kliknięcia");
-      window.location.reload();
-    } else {
-      console.log("Nie znaleziono Użytkownika");
-      window.location.reload();
-    }
-  }).catch(error => {
-    console.error('Wystąpił błąd:', error);
-  });
+  postClick()
 });

@@ -81,6 +81,8 @@ TEMPLATES = [
     },
 ]
 
+DJANGO_ADMIN_DARK_MODE = True
+
 WSGI_APPLICATION = "django_web.wsgi.application"
 
 
