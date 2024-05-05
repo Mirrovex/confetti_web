@@ -15,24 +15,25 @@ class ClickView(APIView):
 
         users = User.objects.filter(session=self.request.session.session_key)
         if users.exists():
-            if request.data.get("click") == 0:
-                return Response("Brak kliknięć", status=200)
+            click = request.data.get("click")
+            if click == 0:
+                return Response("Brak kliknięć", status=204)
             
             seconds = request.data.get("time") / 1000
             if seconds == 0:
                 speed = 0
             else:
-                speed = request.data.get("click") / seconds
+                speed = click / seconds
                 speed = round(speed, 1)
 
             user = users[0]
             click_before = user.click
-            user.click += request.data.get("click")
             if speed > user.speed:
                 user.speed = speed
-            user.save()
+            user.click += click
+            user.save(update_fields=["click", "speed"])
 
-            print(f" -> {user.name} | {click_before} + {request.data.get('click')} = {user.click}")
+            print(f" -> {user.name} | {click_before} + {click} = {user.click} | {user.speed} >> {speed}")
 
             return Response("Dodano kliknięcia", status=200)
         return Response("Nie znaleziono użytkownika", status=404)
