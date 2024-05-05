@@ -87,14 +87,31 @@ tr.current {
     align-items: center;
     width: 23em;
 }
-.counter_div {
+.counter {
+    margin: 0;
+    font-size: 55px;
+    margin-left: 20px;
+}
+.videoContainer {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+.rickroll {
+    position: absolute;
+    margin-top: 50px;
+    height: 50vh;
+    z-index: -1;
+    visibility: hidden;
+}
+
+
+.button_div {
     margin-top: 50px;
     width: 100vw;
     justify-content: center;
     z-index: 5;
-
 }
-
 .button {
     font-size: 1.4em;
     padding: 0.6em 0.8em;
@@ -136,43 +153,35 @@ tr.current {
 .container:active::before {
     filter: blur(0.2em);
 }
-.counter {
-    margin: 0;
-    font-size: 55px;
-    margin-left: 20px;
+.icon_container {
+    height: auto;
 }
-.videoContainer {
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-}
-.rickroll {
-    position: absolute;
-    margin-top: 50px;
-    height: 50vh;
-    z-index: -1;
-    visibility: hidden;
-}
-
-.logout_div {
+.buttons_container {
     position: absolute;
     top: 0;
     right: 0;
+}
+.icon_button_div {
     width: auto;
     margin: 10px;
 }
-.logout {
-    height: auto;
-}
-.logout_button {
+.icon_button {
     font-size: 30px;
     border-radius: 12px;
-    padding: 10px 10px 8px 15px;
 }
 .gradient_text {
     background: linear-gradient(90deg, #03a9f4, #f441a5);
     background-clip: text;
     color: transparent;
+}
+.refresh {
+    padding: 11px 12px 8px 14px;
+}
+.logout {
+    padding: 10px 10px 8px 15px;
+}
+.save {
+    padding: 10px 14px 9px 16px;
 }
 
 

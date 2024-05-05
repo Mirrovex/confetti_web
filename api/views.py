@@ -33,7 +33,7 @@ class ClickView(APIView):
             user.click += click
             user.save(update_fields=["click", "speed"])
 
-            print(f" -> {user.name} | {click_before} + {click} = {user.click} | {speed} >> {user.speed}")
+            print(f" -> {user.name} | {click_before} + {click} = {user.click} | {user.speed} >> {speed}")
 
             return Response("Dodano kliknięcia", status=200)
         return Response("Nie znaleziono użytkownika", status=404)
