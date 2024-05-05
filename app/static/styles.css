@@ -150,6 +150,7 @@ tr.current {
     position: absolute;
     margin-top: 50px;
     height: 50vh;
+    z-index: -1;
     visibility: hidden;
 }
 
