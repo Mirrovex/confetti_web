@@ -93,6 +93,8 @@ tr.current {
     margin-top: 50px;
     width: 100vw;
     justify-content: center;
+    z-index: 5;
+
 }
 
 .button {
@@ -147,7 +149,7 @@ tr.current {
     justify-content: center;
 }
 .rickroll {
-    position: fixed;
+    position: absolute;
     margin-top: 50px;
     height: 50vh;
     visibility: hidden;
@@ -172,4 +174,39 @@ tr.current {
     background: linear-gradient(90deg, #03a9f4, #f441a5);
     background-clip: text;
     color: transparent;
+}
+
+
+
+
+
+canvas {
+    background: transparent;
+    color:white;
+    position: relative;
+    z-index: 1;
+    width: inherit;
+}
+
+.canvas-holder {
+    display:block;
+    width:98%;
+    height:100vh;
+    position: absolute;
+}
+
+.phone {
+    float:left;
+}
+
+.tablet {
+  float:left;
+}
+
+.small-desktop {
+  float:left;
+}
+
+.large-desktop {
+  float:left;
 }
