@@ -22,7 +22,7 @@ let endTime = null
 function postClick() {
   if (counterValue > 0) {
     var totalTime = 0;
-    if (counterValue >= 10) {
+    if (counterValue >= 20) {
       totalTime = endTime - startTime;
     }
     startTime = null
