@@ -17,7 +17,8 @@ def index(request):
         context[f"user{x}"] = {
             "name": user.name,
             "click": user.click,
-            "current": True if user.session == request.session.session_key else False
+            "current": True if user.session == request.session.session_key else False,
+            "speed": user.speed
         }
         x += 1
 
