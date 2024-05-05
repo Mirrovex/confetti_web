@@ -17,10 +17,16 @@ var csrftoken = getCookie('csrftoken');
 let counterValue = 0;
 let doBalls = null
 let startTime = null
+let endTime = null
 
 function postClick() {
   if (counterValue > 0) {
-    var totalTime = new Date() - startTime;
+    var totalTime = 0;
+    if (counterValue >= 10) {
+      totalTime = endTime - startTime;
+    }
+    startTime = null
+    endTime = null
 
     let click = counterValue
     counterValue = 0;
@@ -405,7 +411,6 @@ document.addEventListener('DOMContentLoaded', function () {
     .then(data => {
       if (data.name) {
         confetti_button.disabled = false
-        startTime = new Date();
       } else {
         var name = prompt("Wprowadź swóją nazwę:");
         if (name !== null) {
@@ -436,6 +441,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Adds an event listener for the 'click' event on the targeted button.
   confetti_button.addEventListener('click', function (event) {
+    endTime = new Date();
+    if (!startTime) {
+      startTime = new Date();
+    }
     // Retrieves the position and size of the button to calculate where the confetti should appear.
     const rect = confetti_button.getBoundingClientRect();
 
