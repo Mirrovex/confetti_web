@@ -17,25 +17,27 @@ var csrftoken = getCookie('csrftoken');
 let counterValue = 0;
 
 function postClick() {
-  fetch("api/click/", {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-CSRFToken': csrftoken,
-    },
-    body: JSON.stringify({ "click": counterValue })
-  })
-  .then(response => {
-    if (response.status == 200) {
-      console.log("Dodano kliknięcia");
-      window.location.reload();
-    } else {
-      console.log("Nie znaleziono Użytkownika");
-      window.location.reload();
-    }
-  }).catch(error => {
-    console.error('Wystąpił błąd:', error);
-  });
+  if (counterValue > 0) {
+    fetch("api/click/", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrftoken,
+      },
+      body: JSON.stringify({ "click": counterValue })
+    })
+    .then(response => {
+      if (response.status == 200) {
+        console.log("Dodano kliknięcia");
+        window.location.reload();
+      } else {
+        console.log("Nie znaleziono Użytkownika");
+        window.location.reload();
+      }
+    }).catch(error => {
+      console.error('Wystąpił błąd:', error);
+    });
+  }
 }
 
 
