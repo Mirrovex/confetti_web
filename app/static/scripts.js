@@ -58,7 +58,7 @@ $(document).ready(function () {
   // Set up ball options
   //---------------------------------------
 
-  var ballCount = 100,                                     // How many balls
+  var ballCount = 100,                                   // How many balls
     DAMPING = 0.4,                                       // Damping
     GRAVITY = 0.01,                                      // Gravity strength
     SPEED = 1,                                           // Ball speed
@@ -394,8 +394,7 @@ $(document).ready(function () {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Selects the first element with the class '.confetti-button' as the target button.
-  const confetti_button = document.querySelector('.confetti_button');  // You can change the class, just make sure it is defined in the module also.  
+  const confetti_button = document.querySelector('.confetti_button');
   const counter = document.querySelector('.counter');
   const current_user_click = document.querySelector('tr.current td:nth-last-child(2)')
   const logout_button = document.querySelector('.logout');
@@ -441,19 +440,13 @@ document.addEventListener('DOMContentLoaded', function () {
       console.error('Wystąpił błąd:', error);
     });
 
-  // Adds an event listener for the 'click' event on the targeted button.
   confetti_button.addEventListener('click', function (event) {
     endTime = new Date();
     if (!startTime) {
       startTime = new Date();
     }
-    // Retrieves the position and size of the button to calculate where the confetti should appear.
     const rect = confetti_button.getBoundingClientRect();
-
-    // Calculates the horizontal (x) center of the button.
     const x = (rect.left + rect.right) / 2;
-
-    // Calculates the vertical (y) center of the button.
     const y = (rect.top + rect.bottom) / 2;
 
     // Configures the settings for the confetti effect.
@@ -464,17 +457,16 @@ document.addEventListener('DOMContentLoaded', function () {
       origin: { x: x / window.innerWidth, y: y / window.innerHeight }
     };
 
-    // Triggers the confetti effect with the defined settings when the button is clicked.
     confetti(confettiSettings);
 
     counterValue++
 
-    if (counterValue === 10) {
+    /* if (counterValue === 10) {
       const video = document.querySelector('.rickroll');
       video.style.visibility = "visible";
       video.loop = true;
       video.play()
-    }
+    } */
 
     if (counterValue % 100 === 0 || counterValue === 20) {
       doBalls()
