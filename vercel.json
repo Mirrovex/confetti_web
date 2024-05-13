@@ -1,7 +1,7 @@
 {
     "builds": [
         {
-            "src": "django_web/wsgi.py",
+            "src": "confetti_web/wsgi.py",
             "use": "@vercel/python",
             "config": {
                 "maxLambdaSize": "15mb",
@@ -23,7 +23,7 @@
         },
         {
             "src": "/(.*)",
-            "dest": "django_web/wsgi.py"
+            "dest": "confetti_web/wsgi.py"
         }
     ]
 }
